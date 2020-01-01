@@ -20,6 +20,7 @@
 		D96DE6F823BD4BBC00599817 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DE6F723BD4BBC00599817 /* GFBodyLabel.swift */; };
 		D96DE6FA23BD4C9200599817 /* GFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DE6F923BD4C9200599817 /* GFAlertViewController.swift */; };
 		D96DE6FC23BD524000599817 /* UIViewController+GFAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DE6FB23BD524000599817 /* UIViewController+GFAlert.swift */; };
+		D96DE70223BD562A00599817 /* GFAlertContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DE70123BD562A00599817 /* GFAlertContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D96DE6F723BD4BBC00599817 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		D96DE6F923BD4C9200599817 /* GFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertViewController.swift; sourceTree = "<group>"; };
 		D96DE6FB23BD524000599817 /* UIViewController+GFAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+GFAlert.swift"; sourceTree = "<group>"; };
+		D96DE70123BD562A00599817 /* GFAlertContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				D95F267C23BBD902003C3673 /* gitHubFollowers */,
+				D95F268B23BBD907003C3673 /* Info.plist */,
 				D95F267B23BBD902003C3673 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,6 +99,7 @@
 				D96DE6F523BD4A6D00599817 /* GFTitleLabel.swift */,
 				D96DE6F723BD4BBC00599817 /* GFBodyLabel.swift */,
 				D96DE6F923BD4C9200599817 /* GFAlertViewController.swift */,
+				D96DE70123BD562A00599817 /* GFAlertContainer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,7 +119,6 @@
 				D95F267F23BBD902003C3673 /* SceneDelegate.swift */,
 				D95F268623BBD907003C3673 /* Assets.xcassets */,
 				D95F268823BBD907003C3673 /* LaunchScreen.storyboard */,
-				D95F268B23BBD907003C3673 /* Info.plist */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				D96DE6F623BD4A6D00599817 /* GFTitleLabel.swift in Sources */,
 				D95F267E23BBD902003C3673 /* AppDelegate.swift in Sources */,
 				D96DE6F823BD4BBC00599817 /* GFBodyLabel.swift in Sources */,
+				D96DE70223BD562A00599817 /* GFAlertContainer.swift in Sources */,
 				D95F269423BBDDBA003C3673 /* FavoritesListViewController.swift in Sources */,
 				D95F268023BBD902003C3673 /* SceneDelegate.swift in Sources */,
 			);
@@ -338,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5WNNJW9ZPQ;
-				INFOPLIST_FILE = gitHubFollowers/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -356,7 +360,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5WNNJW9ZPQ;
-				INFOPLIST_FILE = gitHubFollowers/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
