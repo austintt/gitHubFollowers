@@ -51,17 +51,32 @@ class FollowerListViewController: UIViewController {
     }
     
     func getFollowers(username: String, page: Int) {
+        showLoadingView()
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
+            guard let self = self else { return }
+            self.dismissLoadingView()
             
             switch result {
             case .success(let followers):
+            
                 // Used in paging logic
-                if followers.count < 100 { self?.hasMoreFollowers = false }
+                if followers.count < 100 { self.hasMoreFollowers = false }
                 
-                self?.followers.append(contentsOf: followers)
-                self?.updateData()
+                self.followers.append(contentsOf: followers)
+                
+                // If there aren't any followers, show empty state view
+                if self.followers.isEmpty {
+                    let message = "This user doesn't have any followers 😔."
+                    
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                        return
+                    }
+                }
+                
+                self.updateData()
             case .failure(let error):
-                self?.presentGFAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "Ok")
+                self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }
