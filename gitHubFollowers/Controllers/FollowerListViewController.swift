@@ -55,6 +55,7 @@ class FollowerListViewController: UIViewController {
     func configureSearchController() {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search for a user"
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
@@ -129,8 +130,8 @@ extension FollowerListViewController: UICollectionViewDelegate {
     }
 }
 
-// MARK: - UISearchResultsUpdating
-extension FollowerListViewController: UISearchResultsUpdating {
+// MARK: - UISearchResultsUpdating/Delgate
+extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         // Make sure we have stuff
         guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
@@ -140,5 +141,10 @@ extension FollowerListViewController: UISearchResultsUpdating {
         
         // Update
         updateData(on: filteredFollowers)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredFollowers = []
+        updateData(on: self.followers)
     }
 }
