@@ -16,6 +16,7 @@ class FollowerListViewController: UIViewController {
     
     // MARK: - Properties
     var followers = [Follower]()
+    var filteredFollowers = [Follower]()
     var username: String!
     var page = 1
     var hasMoreFollowers = true
@@ -26,6 +27,7 @@ class FollowerListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
+        configureSearchController()
         configureCollectionView()
         getFollowers(username: username, page: page)
         configureDataSource()
@@ -36,7 +38,7 @@ class FollowerListViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    // MARK: - Internal
+    // MARK: - Configuration
     func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -50,6 +52,15 @@ class FollowerListViewController: UIViewController {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
     
+    func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search for a user"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+    }
+    
+    // MARK: - Internal
     func getFollowers(username: String, page: Int) {
         showLoadingView()
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
@@ -74,7 +85,7 @@ class FollowerListViewController: UIViewController {
                     }
                 }
                 
-                self.updateData()
+                self.updateData(on: self.followers)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "Ok")
             }
@@ -91,7 +102,7 @@ class FollowerListViewController: UIViewController {
         })
     }
     
-    func updateData() {
+    func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
@@ -115,5 +126,19 @@ extension FollowerListViewController: UICollectionViewDelegate {
             page += 1
             getFollowers(username: username, page: page)
         }
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension FollowerListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        // Make sure we have stuff
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        
+        // Filter down based on search text
+        filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
+        
+        // Update
+        updateData(on: filteredFollowers)
     }
 }
