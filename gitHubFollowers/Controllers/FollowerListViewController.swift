@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FollowerListVCDelegate: class {
+    func didRequestFollowers(for username: String)
+}
+
 class FollowerListViewController: UIViewController {
 
     enum Section {
@@ -138,6 +142,7 @@ extension FollowerListViewController: UICollectionViewDelegate {
         
         // Set up view
         let userInfoVC = UserInfoViewController()
+        userInfoVC.delegate = self
         let navVC = UINavigationController(rootViewController: userInfoVC)
         userInfoVC.username = follower.login
         
@@ -148,6 +153,7 @@ extension FollowerListViewController: UICollectionViewDelegate {
 
 // MARK: - UISearchResultsUpdating/Delgate
 extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
     func updateSearchResults(for searchController: UISearchController) {
         // Make sure we have stuff
         guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
@@ -164,5 +170,22 @@ extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelega
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         updateData(on: self.followers)
+    }
+}
+
+// MARK: - FollowerListVCDelegate
+extension FollowerListViewController: FollowerListVCDelegate {
+    
+    func didRequestFollowers(for username: String) {
+        // Reset the view
+        self.username = username
+        title = username
+        page = 1
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        
+        // Get the new stuff
+        getFollowers(username: username, page: page)
     }
 }
