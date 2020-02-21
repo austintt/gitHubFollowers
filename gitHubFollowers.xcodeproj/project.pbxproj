@@ -39,6 +39,7 @@
 		D9AC685C23F5F971000349A4 /* GFFollowerItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AC685B23F5F971000349A4 /* GFFollowerItemViewController.swift */; };
 		D9F253CF24006667000E7259 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F253CE24006667000E7259 /* Date+Ext.swift */; };
 		D9F253D12400667F000E7259 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F253D02400667F000E7259 /* String+Ext.swift */; };
+		D9F253D3240083FA000E7259 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F253D2240083FA000E7259 /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		D9AC685B23F5F971000349A4 /* GFFollowerItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemViewController.swift; sourceTree = "<group>"; };
 		D9F253CE24006667000E7259 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		D9F253D02400667F000E7259 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		D9F253D2240083FA000E7259 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				D90C5EC723C55DBA00EADC64 /* NetworkManager.swift */,
+				D9F253D2240083FA000E7259 /* PersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				D96DE6F423BD39EA00599817 /* FollowerListViewController.swift in Sources */,
 				D97D6BE023BD8E5200AB61EC /* User.swift in Sources */,
 				D90C5ECE23C56E7F00EADC64 /* FollowerCell.swift in Sources */,
+				D9F253D3240083FA000E7259 /* PersistenceManager.swift in Sources */,
 				D90C5ED023C56EEB00EADC64 /* GFAvatarImageView.swift in Sources */,
 				D96DE6F623BD4A6D00599817 /* GFTitleLabel.swift in Sources */,
 				D97D6BDE23BD8D9200AB61EC /* Follower.swift in Sources */,
