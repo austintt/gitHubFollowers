@@ -191,6 +191,7 @@
 		D95FCC9223F4BE8400BF41AE /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
+				D96DE6F923BD4C9200599817 /* GFAlertViewController.swift */,
 				D96DE70123BD562A00599817 /* GFAlertContainer.swift */,
 			);
 			path = Alerts;
@@ -273,7 +274,6 @@
 		D9A6F97323F5F71400C5FF33 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D96DE6F923BD4C9200599817 /* GFAlertViewController.swift */,
 				D9A6F96823F5DFD600C5FF33 /* GFUserInfoHeaderViewController.swift */,
 				D9A6F97623F5F7C700C5FF33 /* Info VCs */,
 			);
